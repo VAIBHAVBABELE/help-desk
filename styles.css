@@ -22,13 +22,14 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 20px;
+    padding: 0;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
-    overflow-y: auto;
+    overflow: hidden;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    height: 100vh;
 }
 
 /* Header */
@@ -73,17 +74,14 @@ header {
 /* Chat Display */
 #chat-display {
     flex: 1;
-    min-height: 60vh;
-    border: 1px solid #ddd;
-    padding: 15px;
     overflow-y: auto;
+    padding: 15px;
     background-color: #fafafa;
-    border-radius: 8px;
-    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     scroll-behavior: smooth;
+    height: calc(100vh - 150px); /* Adjust based on header and input height */
 }
 
 /* Message Styles */
@@ -151,10 +149,11 @@ header {
 .input-area {
     display: flex;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
     position: sticky;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid #ddd;
 }
 
 #user-query {
@@ -221,7 +220,6 @@ header {
 
 /* Footer */
 footer {
-    margin-top: auto;
     background-color: #333;
     color: white;
     text-align: center;
@@ -234,45 +232,14 @@ footer {
     margin: auto;
 }
 
-/* Links and Files */
-.file-link {
-    color: #1976d2;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.file-link:hover {
-    color: #0d47a1;
-}
-
-.external-link {
-    color: #4CAF50;
-    text-decoration: underline;
-}
-
-/* Image Preview */
-#image-viewer {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* Timestamps */
-.message-time {
-    font-size: 0.7em;
-    color: #666;
-    margin-top: 4px;
-    text-align: right;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .chat-container {
-        padding: 10px;
+        padding: 0;
     }
 
     #chat-display {
-        min-height: 65vh;
+        height: calc(100vh - 140px); /* Full height minus header and input */
         padding: 10px;
     }
 
@@ -285,8 +252,7 @@ footer {
     }
 
     .input-area {
-        flex-direction: row;
-        padding: 8px 0;
+        padding: 8px;
     }
 
     #user-query {
@@ -298,34 +264,17 @@ footer {
         padding: 8px 15px;
         height: 45px;
     }
-
-    .example-questions {
-        gap: 8px;
-    }
-
-    .example-btn {
-        padding: 6px 10px;
-        font-size: 0.8em;
-    }
 }
 
 @media (max-width: 480px) {
     #chat-display {
-        min-height: 70vh;
+        height: calc(100vh - 130px); /* Adjust for smaller devices */
     }
 
     .message {
         max-width: 90%;
         font-size: 0.85em;
         padding: 8px 12px;
-    }
-
-    .welcome-message {
-        padding: 10px;
-    }
-
-    .welcome-message h3 {
-        font-size: 1.1em;
     }
 }
 
