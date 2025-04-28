@@ -12,25 +12,33 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Chat container */
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    flex: 1;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.6); /* Slight white transparent layer */
-    backdrop-filter: blur(10px); /* Nice blur effect */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
     overflow-y: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
-
 
 /* Header */
 header {
     background-color: #4CAF50;
     color: white;
     padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .header-content {
@@ -62,11 +70,10 @@ header {
     background-color: #e8f5e9;
 }
 
-/* Chat Container */
-
 /* Chat Display */
 #chat-display {
-    height: 350px;
+    flex: 1;
+    min-height: 60vh;
     border: 1px solid #ddd;
     padding: 15px;
     overflow-y: auto;
@@ -76,6 +83,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    scroll-behavior: smooth;
 }
 
 /* Message Styles */
@@ -85,18 +93,21 @@ header {
     border-radius: 16px;
     font-size: 0.95em;
     word-wrap: break-word;
+    line-height: 1.4;
 }
 
 .user-message {
     align-self: flex-end;
     background-color: #e3f2fd;
     border-radius: 18px 18px 0 18px;
+    margin-left: auto;
 }
 
 .bot-message {
     align-self: flex-start;
     background-color: #f1f1f1;
     border-radius: 18px 18px 18px 0;
+    margin-right: auto;
 }
 
 /* Welcome Message */
@@ -105,6 +116,7 @@ header {
     background-color: #e8f5e9;
     border-radius: 10px;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 .welcome-message h3 {
@@ -128,6 +140,7 @@ header {
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.3s;
+    white-space: nowrap;
 }
 
 .example-btn:hover {
@@ -138,6 +151,10 @@ header {
 .input-area {
     display: flex;
     gap: 10px;
+    padding: 10px 0;
+    position: sticky;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 #user-query {
@@ -146,6 +163,9 @@ header {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
+    min-height: 50px;
+    max-height: 120px;
+    resize: none;
 }
 
 #send-btn {
@@ -157,6 +177,8 @@ header {
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
+    align-self: flex-end;
+    height: 50px;
 }
 
 #send-btn:hover {
@@ -184,6 +206,8 @@ header {
     width: 90%;
     max-width: 700px;
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .close-btn {
@@ -197,7 +221,7 @@ header {
 
 /* Footer */
 footer {
-    margin-top: 30px;
+    margin-top: auto;
     background-color: #333;
     color: white;
     text-align: center;
@@ -233,27 +257,75 @@ footer {
     margin-top: 10px;
 }
 
+/* Timestamps */
+.message-time {
+    font-size: 0.7em;
+    color: #666;
+    margin-top: 4px;
+    text-align: right;
+}
+
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .chat-container {
-        padding: 15px;
+        padding: 10px;
     }
 
     #chat-display {
-        height: 280px;
+        min-height: 65vh;
+        padding: 10px;
+    }
+
+    .header-content {
+        padding: 0 10px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
     }
 
     .input-area {
-        flex-direction: column;
+        flex-direction: row;
+        padding: 8px 0;
+    }
+
+    #user-query {
+        min-height: 45px;
+        font-size: 0.9rem;
     }
 
     #send-btn {
-        width: 100%;
+        padding: 8px 15px;
+        height: 45px;
     }
 
     .example-questions {
-        flex-direction: column;
-        align-items: center;
+        gap: 8px;
+    }
+
+    .example-btn {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    #chat-display {
+        min-height: 70vh;
+    }
+
+    .message {
+        max-width: 90%;
+        font-size: 0.85em;
+        padding: 8px 12px;
+    }
+
+    .welcome-message {
+        padding: 10px;
+    }
+
+    .welcome-message h3 {
+        font-size: 1.1em;
     }
 }
 
@@ -265,4 +337,23 @@ footer {
     margin-top: 8px;
     border: 1px solid #ddd;
     display: block;
+}
+
+/* Scrollbar styling */
+#chat-display::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#chat-display::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+#chat-display::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
