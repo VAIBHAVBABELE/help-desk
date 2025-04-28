@@ -1,0 +1,268 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background for the whole page or chat area */
+body {
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Chat container */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6); /* Slight white transparent layer */
+    backdrop-filter: blur(10px); /* Nice blur effect */
+    overflow-y: auto;
+}
+
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.language-switcher button {
+    background-color: white;
+    color: #4CAF50;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.language-switcher button:hover {
+    background-color: #e8f5e9;
+}
+
+/* Chat Container */
+
+/* Chat Display */
+#chat-display {
+    height: 350px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #fafafa;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Message Styles */
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #e3f2fd;
+    border-radius: 18px 18px 0 18px;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    border-radius: 18px 18px 18px 0;
+}
+
+/* Welcome Message */
+.welcome-message {
+    padding: 15px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.welcome-message h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.example-questions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.example-btn {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.example-btn:hover {
+    background-color: #bbdefb;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    gap: 10px;
+}
+
+#user-query {
+    flex: 1;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#send-btn {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#send-btn:hover {
+    background-color: #45a049;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Links and Files */
+.file-link {
+    color: #1976d2;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.file-link:hover {
+    color: #0d47a1;
+}
+
+.external-link {
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+/* Image Preview */
+#image-viewer {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .chat-container {
+        padding: 15px;
+    }
+
+    #chat-display {
+        height: 280px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    #send-btn {
+        width: 100%;
+    }
+
+    .example-questions {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Images inside chat messages */
+.message img, .bot-message img, .user-message img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    display: block;
+}

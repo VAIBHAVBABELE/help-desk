@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitra Help Desk</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Nitra Help Desk</div>
+            <div class="language-switcher">
+                <button id="switch-lang" onclick="switchLanguage()">हिंदी</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <!-- Chat messages will appear here -->
+        <div id="chat-display">
+            <div class="welcome-message">
+                <h3>Welcome to College Help Desk!</h3>
+                <p>Hello! I'm here to assist you with college-related queries.</p>
+                <p>Try asking: just click and enter</p>
+                <div class="example-questions">
+                    <button class="example-btn" onclick="fillQuestion('What is the fee structure?')">What is the fee structure?</button>
+                    <button class="example-btn" onclick="fillQuestion('Admission process')">Admission process</button>
+                    <button class="example-btn" onclick="fillQuestion('sample question')">what i ask to you ?</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- User input area -->
+        <div class="input-area">
+            <input type="text" id="user-query" placeholder="Ask about fees, admission, etc...">
+            <button id="send-btn">Send</button>
+        </div>
+
+        <!-- Hidden elements for file handling -->
+        <div id="file-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <iframe id="pdf-viewer" style="width:100%; height:500px;" frameborder="0"></iframe>
+                <img id="image-viewer" style="max-width:100%; max-height:80vh; display:none;">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 College Help Desk | Developed for Educational Purposes</p>
+            <p>Contact: support@collegehelper.edu</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
